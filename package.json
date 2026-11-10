@@ -9,6 +9,8 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@upstash/redis": "^1.41.0",
+    "@vercel/kv": "^3.0.0",
     "lucide-react": "^1.70.0",
     "mathlive": "^0.111.4",
     "next": "16.4.5",
