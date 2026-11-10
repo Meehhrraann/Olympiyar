@@ -1,0 +1,71 @@
+@import "tailwindcss";
+@import "mathlive/fonts.css";
+
+:root {
+  --brand-900: #002760;
+  --brand-700: #0e4ab1;
+  --brand-500: #057cd4;
+  --brand-300: #29e3f6;
+  --brand-200: #30f9d2;
+  --background: #f9fafb;
+  --foreground: #111827;
+  --surface: #ffffff;
+  --border: #e5e7eb;
+  --text-muted: #6b7280;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-muted: var(--text-muted);
+  --color-brand-900: var(--brand-900);
+  --color-brand-700: var(--brand-700);
+  --color-brand-500: var(--brand-500);
+  --color-brand-300: var(--brand-300);
+  --color-brand-200: var(--brand-200);
+  --font-sans: "Vazirmatn", Tahoma, system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { direction: rtl; }
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+button, input, textarea, select { font: inherit; }
+:focus-visible { outline: 2px solid var(--brand-500); outline-offset: 2px; }
+
+@layer components {
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+    border: 1px solid transparent; border-radius: .7rem; padding: .65rem 1.1rem;
+    font-weight: 700; cursor: pointer; transition: .15s ease; text-decoration: none;
+  }
+  .btn:disabled { opacity: .5; cursor: not-allowed; }
+  .btn-primary { background: var(--brand-500); color: white; }
+  .btn-primary:hover:not(:disabled) { background: var(--brand-700); }
+  .btn-outline { background: white; color: var(--brand-900); border-color: var(--brand-900); }
+  .btn-danger { background: #fff1f2; color: #be123c; border-color: #fecdd3; }
+  .card { background: white; border: 1px solid var(--border); border-radius: 1rem; padding: 1.25rem; box-shadow: 0 2px 8px rgb(0 0 0 / .035); }
+  .input {
+    width: 100%; border: 1px solid var(--border); border-radius: .7rem;
+    padding: .7rem .85rem; background: white; color: var(--foreground);
+  }
+  .input:focus { outline: none; border-color: var(--brand-500); box-shadow: 0 0 0 3px rgb(5 124 212 / .12); }
+  .section-title { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 900; color: var(--brand-900); line-height: 1.4; }
+}
+math-field {
+  direction: ltr;
+  text-align: left;
+  border: 1px solid var(--border);
+  border-radius: .7rem;
+  padding: .55rem;
+  min-height: 3.2rem;
+  background: white;
+  width: 100%;
+}
