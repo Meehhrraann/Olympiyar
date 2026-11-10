@@ -1,0 +1,581 @@
+{
+  "questions": [
+    {
+      "id": "az-1",
+      "text": "عبارت  \\(\\int_0^{\\infty}\\!4\\,\\mathrm{d}x\\forall\\pi\\sin x\\)",
+      "options": [
+        "ص",
+        "غ",
+        "غ",
+        "غ"
+      ],
+      "correctAnswer": 0,
+      "explanation": "این متن پاسخنامه است",
+      "olympiadId": "math",
+      "subject": "جبر",
+      "chapter": "عبارت‌های جبری",
+      "topic": "اتحادها",
+      "updatedAt": "2026-11-09T13:00:27.311Z"
+    },
+    {
+      "id": "AZ-2",
+      "text": "عبارت  \\(\\xi\\omicron\\iint\\log_{10}\\) را محاسبه کنید",
+      "options": [
+        "ص",
+        "غ",
+        "غ",
+        "غ"
+      ],
+      "correctAnswer": 0,
+      "explanation": "متن پاسخ \\(\\lim_3x\\pi\\)",
+      "olympiadId": "math",
+      "subject": "جبر",
+      "chapter": "معادلات",
+      "topic": "معادله درجه دوم",
+      "updatedAt": "2026-11-09T13:03:42.695Z"
+    }
+  ],
+  "exams": [
+    {
+      "title": "آزمون گروهی",
+      "duration": 30,
+      "questions": [
+        {
+          "id": "Q-IMPORT-mw997njc-1",
+          "text": "حاصل حد \\(\\lim_{x\\to 0}\\frac{\\sin 3x}{x}\\) کدام است؟",
+          "options": [
+            "\\(1\\)",
+            "\\(3\\)",
+            "\\(\\frac{1}{3}\\)",
+            "\\(0\\)"
+          ],
+          "correctAnswer": 1,
+          "explanation": "رابطه‌ی حد استاندارد \\(\\lim_{u\\to 0}\\frac{\\sin u}{u}=1\\) را به کار می‌بریم:\n\\[\n\\lim_{x\\to 0}\\frac{\\sin 3x}{x}\n=\\lim_{x\\to 0}\\frac{3\\sin 3x}{3x}\n=3\\lim_{3x\\to 0}\\frac{\\sin 3x}{3x}\n=3\\times 1=3\n\\]\nبنابراین گزینه ۲ صحیح است.",
+          "olympiad": "",
+          "subject": "",
+          "chapter": "",
+          "topic": "",
+          "source": "prompt-import",
+          "hasKnownKey": true
+        },
+        {
+          "id": "Q-IMPORT-mw997njc-2",
+          "text": "مشتق تابع \\(f(x)=x^{2}\\ln x\\) در نقطه‌ی \\(x=1\\) کدام است؟",
+          "options": [
+            "\\(0\\)",
+            "\\(1\\)",
+            "\\(2\\)",
+            "\\(e\\)"
+          ],
+          "correctAnswer": 1,
+          "explanation": "با قاعده‌ی ضرب مشتق می‌گیریم:\n\\[\nf'(x)=2x\\ln x+x^{2}\\cdot\\frac{1}{x}=2x\\ln x+x\n\\]\nدر نقطه‌ی \\(x=1\\):\n\\[\nf'(1)=2(1)\\ln 1+1=0+1=1\n\\]\nبنابراین گزینه ۲ صحیح است.",
+          "olympiad": "",
+          "subject": "",
+          "chapter": "",
+          "topic": "",
+          "source": "prompt-import",
+          "hasKnownKey": true
+        },
+        {
+          "id": "Q-IMPORT-mw997njc-3",
+          "text": "مقدار انتگرال معین \\(\\int_{0}^{1}(3x^{2}+2x)\\,dx\\) کدام است؟",
+          "options": [
+            "\\(1\\)",
+            "\\(2\\)",
+            "\\(3\\)",
+            "\\(4\\)"
+          ],
+          "correctAnswer": 1,
+          "explanation": "ابتدا پادمشتق را می‌نویسیم:\n\\[\n\\int (3x^{2}+2x)\\,dx=x^{3}+x^{2}\n\\]\nسپس مقدار آن را از \\(0\\) تا \\(1\\) حساب می‌کنیم:\n\\[\n\\left[x^{3}+x^{2}\\right]_{0}^{1}\n=(1+1)-(0+0)=2\n\\]\nبنابراین گزینه ۲ صحیح است.",
+          "olympiad": "",
+          "subject": "",
+          "chapter": "",
+          "topic": "",
+          "source": "prompt-import",
+          "hasKnownKey": true
+        },
+        {
+          "id": "Q-IMPORT-mw997njc-4",
+          "text": "حاصل حد \\(\\lim_{x\\to 4}\\frac{\\sqrt{x}-2}{x-4}\\) کدام است؟",
+          "options": [
+            "\\(\\frac{1}{4}\\)",
+            "\\(\\frac{1}{2}\\)",
+            "\\(1\\)",
+            "\\(0\\)"
+          ],
+          "correctAnswer": 0,
+          "explanation": "صورت و مخرج را در مزدوج عبارت رادیکالی ضرب می‌کنیم:\n\\[\n\\frac{\\sqrt{x}-2}{x-4}\\times\\frac{\\sqrt{x}+2}{\\sqrt{x}+2}\n=\\frac{x-4}{(x-4)(\\sqrt{x}+2)}\n\\]\nپس از حذف عامل ابهام \\((x-4)\\):\n\\[\n=\\frac{1}{\\sqrt{x}+2}\n\\]\nاکنون حد را محاسبه می‌کنیم:\n\\[\n\\lim_{x\\to 4}\\frac{1}{\\sqrt{x}+2}\n=\\frac{1}{2+2}=\\frac{1}{4}\n\\]\nبنابراین گزینه ۱ صحیح است.",
+          "olympiad": "",
+          "subject": "",
+          "chapter": "",
+          "topic": "",
+          "source": "prompt-import",
+          "hasKnownKey": true
+        },
+        {
+          "id": "Q-IMPORT-mw997njc-5",
+          "text": "مشتق تابع \\(f(x)=\\sin^{2}x\\) در نقطه‌ی \\(x=\\frac{\\pi}{4}\\) کدام است؟",
+          "options": [
+            "\\(0\\)",
+            "\\(1\\)",
+            "\\(\\frac{1}{2}\\)",
+            "\\(\\sqrt{2}\\)"
+          ],
+          "correctAnswer": 1,
+          "explanation": "با قاعده‌ی زنجیره‌ای مشتق می‌گیریم:\n\\[\nf'(x)=2\\sin x\\cos x=\\sin 2x\n\\]\nدر نقطه‌ی \\(x=\\frac{\\pi}{4}\\):\n\\[\nf'\\left(\\frac{\\pi}{4}\\right)\n=\\sin\\left(2\\cdot\\frac{\\pi}{4}\\right)\n=\\sin\\frac{\\pi}{2}=1\n\\]\nبنابراین گزینه ۲ صحیح است.",
+          "olympiad": "",
+          "subject": "",
+          "chapter": "",
+          "topic": "",
+          "source": "prompt-import",
+          "hasKnownKey": true
+        }
+      ],
+      "source": "prompt-import",
+      "id": "EX-MW99A2JI-WZ79R",
+      "createdAt": "2026-11-09T12:47:06.846Z"
+    },
+    {
+      "title": "آزمون دستی جدید",
+      "duration": 30,
+      "questions": [
+        {
+          "id": "az-1",
+          "text": "عبارت  \\(\\int_0^{\\infty}\\!4\\,\\mathrm{d}x\\forall\\pi\\sin x\\)",
+          "options": [
+            "ص",
+            "غ",
+            "غ",
+            "غ"
+          ],
+          "correctAnswer": 0,
+          "explanation": "این متن پاسخنامه است",
+          "olympiadId": "math",
+          "subject": "جبر",
+          "chapter": "عبارت‌های جبری",
+          "topic": "اتحادها",
+          "updatedAt": "2026-11-09T13:00:27.311Z"
+        },
+        {
+          "id": "AZ-2",
+          "text": "عبارت  \\(\\xi\\omicron\\iint\\log_{10}\\) را محاسبه کنید",
+          "options": [
+            "ص",
+            "غ",
+            "غ",
+            "غ"
+          ],
+          "correctAnswer": 0,
+          "explanation": "متن پاسخ \\(\\lim_3x\\pi\\)",
+          "olympiadId": "math",
+          "subject": "جبر",
+          "chapter": "معادلات",
+          "topic": "معادله درجه دوم",
+          "updatedAt": "2026-11-09T13:03:42.695Z"
+        }
+      ],
+      "source": "manual",
+      "id": "EX-MW99WGZ3-483WZ",
+      "createdAt": "2026-11-09T13:04:31.983Z"
+    },
+    {
+      "title": "آزمون دستی جدید",
+      "duration": 30,
+      "questions": [
+        {
+          "id": "Q-MW9A09L1-2FWYV",
+          "text": "نتنیتبتبینتنبی \\(\\iint\\left\\vert\\log_{10}\\ln\\mathrm{abs}\\left(\\placeholder{}\\right)\\right\\vert\\) سبلتاتستس",
+          "options": [
+            "انتایستبایسب",
+            "بیسبیسبسی \\(\\int\\pi\\)",
+            "ییببی",
+            "بیب"
+          ],
+          "correctAnswer": 0,
+          "explanation": "پاساتستایتاتیستیستیس \\(\\log\\)",
+          "olympiadId": "math",
+          "subject": "جبر",
+          "chapter": "عبارت‌های جبری",
+          "topic": "چندجمله‌ای‌ها",
+          "source": "exam-only"
+        }
+      ],
+      "source": "manual",
+      "id": "EX-MW9A3WDC-EIFDR",
+      "createdAt": "2026-11-09T13:10:18.528Z"
+    },
+    {
+      "title": "آزمون بانک سؤالانتیالتایایسا",
+      "duration": 30,
+      "questions": [
+        {
+          "id": "az-1",
+          "text": "عبارت  \\(\\int_0^{\\infty}\\!4\\,\\mathrm{d}x\\forall\\pi\\sin x\\)",
+          "options": [
+            "ص",
+            "غ",
+            "غ",
+            "غ"
+          ],
+          "correctAnswer": 0,
+          "explanation": "این متن پاسخنامه است",
+          "olympiadId": "math",
+          "subject": "جبر",
+          "chapter": "عبارت‌های جبری",
+          "topic": "اتحادها",
+          "updatedAt": "2026-11-09T13:00:27.311Z"
+        }
+      ],
+      "source": "bank",
+      "id": "EX-MW9A7EON-K8T3P",
+      "createdAt": "2026-11-09T13:13:02.231Z"
+    }
+  ],
+  "reports": [
+    {
+      "examId": "EX-MW99A2JI-WZ79R",
+      "examTitle": "آزمون گروهی",
+      "total": 5,
+      "correct": 4,
+      "wrong": 1,
+      "unanswered": 0,
+      "percentage": 80,
+      "topics": {
+        "سایر": {
+          "total": 5,
+          "correct": 4,
+          "wrong": 1,
+          "unanswered": 0
+        }
+      },
+      "answers": {
+        "0": 1,
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "4": 1
+      },
+      "questions": [
+        {
+          "id": "Q-IMPORT-mw997njc-1",
+          "text": "حاصل حد \\(\\lim_{x\\to 0}\\frac{\\sin 3x}{x}\\) کدام است؟",
+          "options": [
+            "\\(1\\)",
+            "\\(3\\)",
+            "\\(\\frac{1}{3}\\)",
+            "\\(0\\)"
+          ],
+          "correctAnswer": 1,
+          "explanation": "رابطه‌ی حد استاندارد \\(\\lim_{u\\to 0}\\frac{\\sin u}{u}=1\\) را به کار می‌بریم:\n\\[\n\\lim_{x\\to 0}\\frac{\\sin 3x}{x}\n=\\lim_{x\\to 0}\\frac{3\\sin 3x}{3x}\n=3\\lim_{3x\\to 0}\\frac{\\sin 3x}{3x}\n=3\\times 1=3\n\\]\nبنابراین گزینه ۲ صحیح است.",
+          "olympiad": "",
+          "subject": "",
+          "chapter": "",
+          "topic": "",
+          "source": "prompt-import",
+          "hasKnownKey": true
+        },
+        {
+          "id": "Q-IMPORT-mw997njc-2",
+          "text": "مشتق تابع \\(f(x)=x^{2}\\ln x\\) در نقطه‌ی \\(x=1\\) کدام است؟",
+          "options": [
+            "\\(0\\)",
+            "\\(1\\)",
+            "\\(2\\)",
+            "\\(e\\)"
+          ],
+          "correctAnswer": 1,
+          "explanation": "با قاعده‌ی ضرب مشتق می‌گیریم:\n\\[\nf'(x)=2x\\ln x+x^{2}\\cdot\\frac{1}{x}=2x\\ln x+x\n\\]\nدر نقطه‌ی \\(x=1\\):\n\\[\nf'(1)=2(1)\\ln 1+1=0+1=1\n\\]\nبنابراین گزینه ۲ صحیح است.",
+          "olympiad": "",
+          "subject": "",
+          "chapter": "",
+          "topic": "",
+          "source": "prompt-import",
+          "hasKnownKey": true
+        },
+        {
+          "id": "Q-IMPORT-mw997njc-3",
+          "text": "مقدار انتگرال معین \\(\\int_{0}^{1}(3x^{2}+2x)\\,dx\\) کدام است؟",
+          "options": [
+            "\\(1\\)",
+            "\\(2\\)",
+            "\\(3\\)",
+            "\\(4\\)"
+          ],
+          "correctAnswer": 1,
+          "explanation": "ابتدا پادمشتق را می‌نویسیم:\n\\[\n\\int (3x^{2}+2x)\\,dx=x^{3}+x^{2}\n\\]\nسپس مقدار آن را از \\(0\\) تا \\(1\\) حساب می‌کنیم:\n\\[\n\\left[x^{3}+x^{2}\\right]_{0}^{1}\n=(1+1)-(0+0)=2\n\\]\nبنابراین گزینه ۲ صحیح است.",
+          "olympiad": "",
+          "subject": "",
+          "chapter": "",
+          "topic": "",
+          "source": "prompt-import",
+          "hasKnownKey": true
+        },
+        {
+          "id": "Q-IMPORT-mw997njc-4",
+          "text": "حاصل حد \\(\\lim_{x\\to 4}\\frac{\\sqrt{x}-2}{x-4}\\) کدام است؟",
+          "options": [
+            "\\(\\frac{1}{4}\\)",
+            "\\(\\frac{1}{2}\\)",
+            "\\(1\\)",
+            "\\(0\\)"
+          ],
+          "correctAnswer": 0,
+          "explanation": "صورت و مخرج را در مزدوج عبارت رادیکالی ضرب می‌کنیم:\n\\[\n\\frac{\\sqrt{x}-2}{x-4}\\times\\frac{\\sqrt{x}+2}{\\sqrt{x}+2}\n=\\frac{x-4}{(x-4)(\\sqrt{x}+2)}\n\\]\nپس از حذف عامل ابهام \\((x-4)\\):\n\\[\n=\\frac{1}{\\sqrt{x}+2}\n\\]\nاکنون حد را محاسبه می‌کنیم:\n\\[\n\\lim_{x\\to 4}\\frac{1}{\\sqrt{x}+2}\n=\\frac{1}{2+2}=\\frac{1}{4}\n\\]\nبنابراین گزینه ۱ صحیح است.",
+          "olympiad": "",
+          "subject": "",
+          "chapter": "",
+          "topic": "",
+          "source": "prompt-import",
+          "hasKnownKey": true
+        },
+        {
+          "id": "Q-IMPORT-mw997njc-5",
+          "text": "مشتق تابع \\(f(x)=\\sin^{2}x\\) در نقطه‌ی \\(x=\\frac{\\pi}{4}\\) کدام است؟",
+          "options": [
+            "\\(0\\)",
+            "\\(1\\)",
+            "\\(\\frac{1}{2}\\)",
+            "\\(\\sqrt{2}\\)"
+          ],
+          "correctAnswer": 1,
+          "explanation": "با قاعده‌ی زنجیره‌ای مشتق می‌گیریم:\n\\[\nf'(x)=2\\sin x\\cos x=\\sin 2x\n\\]\nدر نقطه‌ی \\(x=\\frac{\\pi}{4}\\):\n\\[\nf'\\left(\\frac{\\pi}{4}\\right)\n=\\sin\\left(2\\cdot\\frac{\\pi}{4}\\right)\n=\\sin\\frac{\\pi}{2}=1\n\\]\nبنابراین گزینه ۲ صحیح است.",
+          "olympiad": "",
+          "subject": "",
+          "chapter": "",
+          "topic": "",
+          "source": "prompt-import",
+          "hasKnownKey": true
+        }
+      ],
+      "startedAt": 1794228435653,
+      "finishedAt": "2026-11-09T12:47:35.784Z",
+      "autoSubmitted": false,
+      "id": "RP-MW99AOVD-0S85C",
+      "createdAt": "2026-11-09T12:47:35.785Z"
+    },
+    {
+      "examId": "EX-MW99WGZ3-483WZ",
+      "examTitle": "آزمون دستی جدید",
+      "total": 2,
+      "correct": 1,
+      "wrong": 1,
+      "unanswered": 0,
+      "percentage": 50,
+      "topics": {
+        "اتحادها": {
+          "total": 1,
+          "correct": 1,
+          "wrong": 0,
+          "unanswered": 0
+        },
+        "معادله درجه دوم": {
+          "total": 1,
+          "correct": 0,
+          "wrong": 1,
+          "unanswered": 0
+        }
+      },
+      "answers": {
+        "0": 0,
+        "1": 1
+      },
+      "questions": [
+        {
+          "id": "az-1",
+          "text": "عبارت  \\(\\int_0^{\\infty}\\!4\\,\\mathrm{d}x\\forall\\pi\\sin x\\)",
+          "options": [
+            "ص",
+            "غ",
+            "غ",
+            "غ"
+          ],
+          "correctAnswer": 0,
+          "explanation": "این متن پاسخنامه است",
+          "olympiadId": "math",
+          "subject": "جبر",
+          "chapter": "عبارت‌های جبری",
+          "topic": "اتحادها",
+          "updatedAt": "2026-11-09T13:00:27.311Z"
+        },
+        {
+          "id": "AZ-2",
+          "text": "عبارت  \\(\\xi\\omicron\\iint\\log_{10}\\) را محاسبه کنید",
+          "options": [
+            "ص",
+            "غ",
+            "غ",
+            "غ"
+          ],
+          "correctAnswer": 0,
+          "explanation": "متن پاسخ \\(\\lim_3x\\pi\\)",
+          "olympiadId": "math",
+          "subject": "جبر",
+          "chapter": "معادلات",
+          "topic": "معادله درجه دوم",
+          "updatedAt": "2026-11-09T13:03:42.695Z"
+        }
+      ],
+      "startedAt": 1794229568412,
+      "finishedAt": "2026-11-09T13:06:17.295Z",
+      "autoSubmitted": false,
+      "id": "RP-MW99YQ8G-ITLZM",
+      "createdAt": "2026-11-09T13:06:17.296Z"
+    },
+    {
+      "examId": "EX-MW99WGZ3-483WZ",
+      "examTitle": "آزمون دستی جدید",
+      "total": 2,
+      "correct": 0,
+      "wrong": 2,
+      "unanswered": 0,
+      "percentage": 0,
+      "topics": {
+        "اتحادها": {
+          "total": 1,
+          "correct": 0,
+          "wrong": 1,
+          "unanswered": 0
+        },
+        "معادله درجه دوم": {
+          "total": 1,
+          "correct": 0,
+          "wrong": 1,
+          "unanswered": 0
+        }
+      },
+      "answers": {
+        "0": 2,
+        "1": 1
+      },
+      "questions": [
+        {
+          "id": "az-1",
+          "text": "عبارت  \\(\\int_0^{\\infty}\\!4\\,\\mathrm{d}x\\forall\\pi\\sin x\\)",
+          "options": [
+            "ص",
+            "غ",
+            "غ",
+            "غ"
+          ],
+          "correctAnswer": 0,
+          "explanation": "این متن پاسخنامه است",
+          "olympiadId": "math",
+          "subject": "جبر",
+          "chapter": "عبارت‌های جبری",
+          "topic": "اتحادها",
+          "updatedAt": "2026-11-09T13:00:27.311Z"
+        },
+        {
+          "id": "AZ-2",
+          "text": "عبارت  \\(\\xi\\omicron\\iint\\log_{10}\\) را محاسبه کنید",
+          "options": [
+            "ص",
+            "غ",
+            "غ",
+            "غ"
+          ],
+          "correctAnswer": 0,
+          "explanation": "متن پاسخ \\(\\lim_3x\\pi\\)",
+          "olympiadId": "math",
+          "subject": "جبر",
+          "chapter": "معادلات",
+          "topic": "معادله درجه دوم",
+          "updatedAt": "2026-11-09T13:03:42.695Z"
+        }
+      ],
+      "startedAt": 1794229829420,
+      "finishedAt": "2026-11-09T13:10:41.502Z",
+      "autoSubmitted": false,
+      "id": "RP-MW9A4E3I-H03LK",
+      "createdAt": "2026-11-09T13:10:41.502Z"
+    },
+    {
+      "examId": "EX-MW9A7EON-K8T3P",
+      "examTitle": "آزمون بانک سؤالانتیالتایایسا",
+      "total": 1,
+      "correct": 0,
+      "wrong": 1,
+      "unanswered": 0,
+      "percentage": 0,
+      "topics": {
+        "اتحادها": {
+          "total": 1,
+          "correct": 0,
+          "wrong": 1,
+          "unanswered": 0
+        }
+      },
+      "answers": {
+        "0": 2
+      },
+      "questions": [
+        {
+          "id": "az-1",
+          "text": "عبارت  \\(\\int_0^{\\infty}\\!4\\,\\mathrm{d}x\\forall\\pi\\sin x\\)",
+          "options": [
+            "ص",
+            "غ",
+            "غ",
+            "غ"
+          ],
+          "correctAnswer": 0,
+          "explanation": "این متن پاسخنامه است",
+          "olympiadId": "math",
+          "subject": "جبر",
+          "chapter": "عبارت‌های جبری",
+          "topic": "اتحادها",
+          "updatedAt": "2026-11-09T13:00:27.311Z"
+        }
+      ],
+      "startedAt": 1794232384280,
+      "finishedAt": "2026-11-09T13:53:12.182Z",
+      "autoSubmitted": false,
+      "id": "RP-MW9BN27Q-SWYEX",
+      "createdAt": "2026-11-09T13:53:12.182Z"
+    },
+    {
+      "examId": "EX-MW9A3WDC-EIFDR",
+      "examTitle": "آزمون دستی جدید",
+      "total": 1,
+      "correct": 0,
+      "wrong": 1,
+      "unanswered": 0,
+      "percentage": 0,
+      "topics": {
+        "چندجمله‌ای‌ها": {
+          "total": 1,
+          "correct": 0,
+          "wrong": 1,
+          "unanswered": 0
+        }
+      },
+      "answers": {
+        "0": 1
+      },
+      "questions": [
+        {
+          "id": "Q-MW9A09L1-2FWYV",
+          "text": "نتنیتبتبینتنبی \\(\\iint\\left\\vert\\log_{10}\\ln\\mathrm{abs}\\left(\\placeholder{}\\right)\\right\\vert\\) سبلتاتستس",
+          "options": [
+            "انتایستبایسب",
+            "بیسبیسبسی \\(\\int\\pi\\)",
+            "ییببی",
+            "بیب"
+          ],
+          "correctAnswer": 0,
+          "explanation": "پاساتستایتاتیستیستیس \\(\\log\\)",
+          "olympiadId": "math",
+          "subject": "جبر",
+          "chapter": "عبارت‌های جبری",
+          "topic": "چندجمله‌ای‌ها",
+          "source": "exam-only"
+        }
+      ],
+      "startedAt": 1794232399934,
+      "finishedAt": "2026-11-09T13:53:26.567Z",
+      "autoSubmitted": false,
+      "id": "RP-MW9BNDBB-6CQYG",
+      "createdAt": "2026-11-09T13:53:26.567Z"
+    }
+  ]
+}
