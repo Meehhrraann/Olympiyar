@@ -170,7 +170,7 @@ export default function ReportCard({ report }) {
   const topics = Object.entries(report.topics || {});
 
   return (
-    <article className="overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-sm transition max-w:md hover:shadow-md">
+    <article className="overflow-hidden rounded-3xl border mx-auto border-gray-100 bg-white shadow-sm transition  hover:shadow-md">
       <div className={`h-1.5 bg-gradient-to-l ${grade.gradient}`} />
 
       {/* هدر */}

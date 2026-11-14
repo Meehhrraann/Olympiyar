@@ -120,7 +120,7 @@ export default function ReportPage() {
         </button>
       </div>
 
-      <div className="space-y-6">
+      <div className="space-y-6 max-w-2xl mx-auto">
         {reports.map((r) => (
           <div key={r.id} id={r.id}>
             <div className="mb-2 flex flex-wrap justify-end gap-2">
