@@ -11,9 +11,9 @@ import { toast } from 'sonner';
 export default function ReportPage() {
   const [reports, setReports] = useState([]);
   const [latest, setLatest] = useState('');
+  const [initialLoading, setInitialLoading] = useState(true);
   const [, startTransition] = useTransition();
 
-  // state دیالوگ
   const [dialog, setDialog] = useState({
     open: false,
     mode: null,      // 'one' | 'all'
@@ -21,25 +21,43 @@ export default function ReportPage() {
     loading: false,
   });
 
+  // ============ بارگذاری اولیه — await ============
   useEffect(() => {
-    setReports(storage.getReports().slice().reverse());
+    let cancelled = false;
+
+    (async () => {
+      try {
+        const list = await storage.getReports();
+        // امن‌سازی: هر چیزی که برگشت، اگر آرایه نبود، آرایه خالی
+        const arr = Array.isArray(list) ? list : [];
+        if (!cancelled) setReports(arr.slice().reverse());
+      } catch (err) {
+        console.error('Failed to load reports:', err);
+        if (!cancelled) setReports([]);
+        toast.error('بارگذاری کارنامه‌ها ناموفق بود');
+      } finally {
+        if (!cancelled) setInitialLoading(false);
+      }
+    })();
+
     setLatest(new URLSearchParams(window.location.search).get('latest') || '');
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   // ============ حذف تکی — Optimistic ============
   async function performDeleteOne(id) {
-    // ۱. از لیست UI حذف کن (فوری — بدون منتظر ماندن برای API)
     const before = reports;
     startTransition(() => {
       setReports((rs) => rs.filter((r) => r.id !== id));
     });
 
     try {
-      // ۲. API را صدا بزن
       await storage.deleteReport(id);
       toast.success('کارنامه حذف شد');
     } catch (err) {
-      // ۳. اگر خطا داد، حالت قبلی را برگردان
       setReports(before);
       toast.error('حذف ناموفق بود — دوباره تلاش کنید');
       console.error(err);
@@ -54,7 +72,6 @@ export default function ReportPage() {
     startTransition(() => setReports([]));
 
     try {
-      // همه را موازی بفرست — نه پشت سر هم
       await Promise.all(before.map((r) => storage.deleteReport(r.id)));
       toast.success('همه کارنامه‌ها حذف شدند');
     } catch (err) {
@@ -69,6 +86,18 @@ export default function ReportPage() {
   function confirmAction() {
     if (dialog.mode === 'one') performDeleteOne(dialog.id);
     else if (dialog.mode === 'all') performDeleteAll();
+  }
+
+  // ============ حالت بارگذاری اولیه ============
+  if (initialLoading) {
+    return (
+      <div className="mx-auto max-w-6xl px-4 py-10">
+        <h1 className="section-title mb-6">کارنامه‌های من</h1>
+        <div className="card py-16 text-center text-gray-500">
+          در حال بارگذاری…
+        </div>
+      </div>
+    );
   }
 
   return (
