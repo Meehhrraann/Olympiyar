@@ -1,158 +1,144 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useTransition } from 'react';
 import Link from 'next/link';
 import { Trash2, RotateCcw } from 'lucide-react';
-import Image from 'next/image';
 import { storage } from '@/lib/storage';
 import ReportCard from '@/components/ReportCard';
+import ConfirmDialog from '@/components/ConfirmDialog';
+import { toast } from 'sonner';
 
 export default function ReportPage() {
   const [reports, setReports] = useState([]);
   const [latest, setLatest] = useState('');
+  const [, startTransition] = useTransition();
 
-  const reload = async () => {
-  const list = await storage.getReports();
-  setReports(list.slice().reverse());
-};
+  // state دیالوگ
+  const [dialog, setDialog] = useState({
+    open: false,
+    mode: null,      // 'one' | 'all'
+    id: null,
+    loading: false,
+  });
 
-useEffect(() => {
-  reload();
-  setLatest(new URLSearchParams(window.location.search).get("latest") || "");
-}, []);
+  useEffect(() => {
+    setReports(storage.getReports().slice().reverse());
+    setLatest(new URLSearchParams(window.location.search).get('latest') || '');
+  }, []);
 
-async function handleDeleteAll() {
-  if (!confirm("تمام کارنامه‌ها حذف شوند؟")) return;
-  const list = await storage.getReports();
-  await Promise.all(list.map(r => storage.deleteReport(r.id)));
-  reload();
-}
+  // ============ حذف تکی — Optimistic ============
+  async function performDeleteOne(id) {
+    // ۱. از لیست UI حذف کن (فوری — بدون منتظر ماندن برای API)
+    const before = reports;
+    startTransition(() => {
+      setReports((rs) => rs.filter((r) => r.id !== id));
+    });
 
-async function handleDeleteOne(id) {
-  if (!confirm("این کارنامه حذف شود؟")) return;
-  await storage.deleteReport(id);
-  reload();
-}
+    try {
+      // ۲. API را صدا بزن
+      await storage.deleteReport(id);
+      toast.success('کارنامه حذف شد');
+    } catch (err) {
+      // ۳. اگر خطا داد، حالت قبلی را برگردان
+      setReports(before);
+      toast.error('حذف ناموفق بود — دوباره تلاش کنید');
+      console.error(err);
+    } finally {
+      setDialog({ open: false, mode: null, id: null, loading: false });
+    }
+  }
+
+  // ============ حذف همه — با Promise.all ============
+  async function performDeleteAll() {
+    const before = reports;
+    startTransition(() => setReports([]));
+
+    try {
+      // همه را موازی بفرست — نه پشت سر هم
+      await Promise.all(before.map((r) => storage.deleteReport(r.id)));
+      toast.success('همه کارنامه‌ها حذف شدند');
+    } catch (err) {
+      setReports(before);
+      toast.error('حذف ناموفق بود — دوباره تلاش کنید');
+      console.error(err);
+    } finally {
+      setDialog({ open: false, mode: null, id: null, loading: false });
+    }
+  }
+
+  function confirmAction() {
+    if (dialog.mode === 'one') performDeleteOne(dialog.id);
+    else if (dialog.mode === 'all') performDeleteAll();
+  }
 
   return (
-    <div className="w-full py-10">
-      {/* ============ Hero (full width) ============ */}
-      <section
-        className="mb-10 w-full overflow-hidden rounded-3xl p-6 md:p-8 text-white"
-        style={{
-          background:
-            'linear-gradient(135deg, #002760 0%, #0E4AB1 55%, #057CD4 100%)',
-        }}
-      >
-        <div className="mx-auto max-w-6xl px-4">
-          <div className="grid items-center gap-6 md:grid-cols-[minmax(0,320px)_1fr]">
-            {/* تصویر — چپ */}
-            <div className="order-2 md:order-1 relative mx-auto h-44 w-full max-w-[320px] md:h-52">
-              <Image
-                src="/report.png"
-                alt="کارنامه‌های المپیار"
-                fill
-                sizes="(max-width: 768px) 90vw, 320px"
-                className="object-contain drop-shadow-xl"
-                priority
-              />
-            </div>
-
-            {/* متن — راست */}
-            <div className="order-1 md:order-2 text-center md:text-right space-y-3">
-              <span className="inline-block rounded-full bg-white/15 px-3 py-1 text-xs font-medium">
-                کارنامه‌ها
-              </span>
-              <h1 className="text-3xl md:text-4xl font-extrabold leading-tight">
-                کارنامه‌های من
-              </h1>
-              <p className="text-white/85 max-w-lg mx-auto md:mx-0">
-                تمام تلاش‌های ثبت‌شده شما در این مرورگر. نتیجه هر آزمون را
-                می‌توانید بررسی کنید یا دوباره در آن شرکت کنید.
-              </p>
-              <div className="pt-2">
-                <button
-                  onClick={handleDeleteAll}
-                  disabled={reports.length === 0}
-                  className="btn"
-                  style={{
-                    background: 'rgba(255,255,255,0.15)',
-                    color: '#fff',
-                    border: '1px solid rgba(255,255,255,0.35)',
-                  }}
-                >
-                  <Trash2 size={16} />
-                  حذف همه کارنامه‌ها
-                </button>
-              </div>
-            </div>
-          </div>
+    <div className="mx-auto max-w-6xl px-4 py-10">
+      <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <h1 className="section-title">کارنامه‌های من</h1>
+          <p className="mt-2 text-gray-500">
+            تمام تلاش‌های ثبت‌شده شما در این مرورگر.
+          </p>
         </div>
-      </section>
+        <button
+          className="btn text-sm"
+          style={{ background: '#fee2e2', color: '#b91c1c', border: '1px solid #fecaca' }}
+          onClick={() => setDialog({ open: true, mode: 'all', id: null, loading: false })}
+          disabled={reports.length === 0}
+        >
+          <Trash2 size={16} />
+          حذف همه کارنامه‌ها
+        </button>
+      </div>
 
-      {/* ============ لیست کارنامه‌ها (60% width, centered) ============ */}
-      <div className="mx-auto w-full md:w-[60%] px-4 space-y-6">
+      <div className="space-y-6">
         {reports.map((r) => (
-          <div
-            key={r.id}
-            id={r.id}
-            className={
-              latest === r.id
-                ? 'rounded-2xl transition'
-                : 'transition'
-            }
-          >
-            {/* نوار اکشن بالای هر کارت */}
-            <div className="mb-2 flex flex-wrap items-center justify-between gap-2 px-1">
-              <div className="text-xs text-gray-400">
-                {latest === r.id && (
-                  <span className="rounded-full bg-brand-500/10 px-2 py-0.5 text-brand-700 font-medium">
-                    جدیدترین
-                  </span>
-                )}
-              </div>
-              <div className="flex flex-wrap gap-2">
-                <Link
-                  href={`/exam/${encodeURIComponent(r.examId)}`}
-                  className="btn btn-outline text-sm"
-                >
-                  <RotateCcw size={15} />
-                  شرکت مجدد
-                </Link>
-                <button
-                  onClick={() => handleDeleteOne(r.id)}
-                  className="btn text-sm"
-                  style={{
-                    background: '#fee2e2',
-                    color: '#b91c1c',
-                    border: '1px solid #fecaca',
-                  }}
-                >
-                  <Trash2 size={15} />
-                  حذف
-                </button>
-              </div>
+          <div key={r.id} id={r.id}>
+            <div className="mb-2 flex flex-wrap justify-end gap-2">
+              <Link
+                href={`/exam/${encodeURIComponent(r.examId)}`}
+                className="btn btn-outline text-sm"
+              >
+                <RotateCcw size={15} />
+                شرکت مجدد
+              </Link>
+              <button
+                className="btn text-sm"
+                style={{ background: '#fee2e2', color: '#b91c1c', border: '1px solid #fecaca' }}
+                onClick={() =>
+                  setDialog({ open: true, mode: 'one', id: r.id, loading: false })
+                }
+              >
+                <Trash2 size={15} />
+                حذف
+              </button>
             </div>
-
             <ReportCard report={r} />
           </div>
         ))}
 
         {reports.length === 0 && (
-          <div className="card py-16 text-center">
-            <div className="text-5xl mb-3">📭</div>
-            <p className="text-gray-600 font-medium">
-              هنوز کارنامه‌ای ندارید.
-            </p>
-            <p className="text-sm text-gray-400 mt-1">
-              پس از شرکت در یک آزمون، نتیجه اینجا نمایش داده می‌شود.
-            </p>
-            <Link href="/exam" className="btn btn-primary mt-6 inline-flex">
-              رفتن به آزمون‌ها
-            </Link>
+          <div className="card py-16 text-center text-gray-500">
+            هنوز کارنامه‌ای ندارید.
           </div>
         )}
       </div>
+
+      <ConfirmDialog
+        open={dialog.open}
+        loading={dialog.loading}
+        title={dialog.mode === 'all' ? 'حذف همه کارنامه‌ها' : 'حذف کارنامه'}
+        description={
+          dialog.mode === 'all'
+            ? 'آیا از حذف تمام کارنامه‌ها مطمئن هستید؟ این عمل قابل بازگشت نیست.'
+            : 'آیا از حذف این کارنامه مطمئن هستید؟'
+        }
+        onConfirm={() => {
+          setDialog((d) => ({ ...d, loading: true }));
+          confirmAction();
+        }}
+        onCancel={() => setDialog({ open: false, mode: null, id: null, loading: false })}
+      />
     </div>
   );
 }
